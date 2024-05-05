@@ -6,7 +6,7 @@ function main(obj)
     % 設定矩陣大小
     groupNum = 75;  %族群數
     dimention = 2;  %變數個數    
-    totalIter=70;   %遞迴數
+    totalIter=50;   %遞迴數
     %----------
     group=groupInit(Max , Min , groupNum);
     Best_sol=inf;
