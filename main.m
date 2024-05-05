@@ -16,13 +16,15 @@ function main(obj)
         %取出最佳值與最佳族群
         % For limiting out of bound solutions and setting best solution and
         % objective function value
-        for i=1:size(group,1)  
-            Indx_max=group(i,:)>Max;
-            Indx_min=group(i,:)<Min;
+        for i=1:size(group,1) 
+            %檢查是否有超出範圍的族群 
+            Indx_max=group(i,:)>Max;    %建立一個陣列其元素為group(i,:)是否大於MAX
+            Indx_min=group(i,:)<Min;    %建立一個陣列其元素為group(i,:)是否小於MIN
             group(i,:)=(group(i,:).*(~(Indx_max+Indx_min)))+Max.*Indx_max+Min.*Indx_min;
-            %Evaluate objective function for each solution
+                                    %若group在範圍外設為0    並將其設為範圍最大or最小值
+            %評估各族群的fitvalue
             fitness=fit_function(group(i,:));
-            
+            %儲存最佳解及最佳族群
             if(Best_sol>fitness)
                 Best_sol=fitness;
                 Best_X=group(i,:);
@@ -30,6 +32,8 @@ function main(obj)
         end
         theta = C/totalIter;
         %pedal scent marking behavior begin
+
+        %取出最小級最大fitvalue及其所屬的group
         [min_fit, Indx1]=min(fitness);
         Best_fit=group(Indx1,:);
         [max_fit, Indx2]=max(fitness);
