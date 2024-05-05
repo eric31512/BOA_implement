@@ -4,9 +4,9 @@ function main(obj)
     Min=[-1.5 -3 ]; % Minimum value of each group
     Max=[  4   4 ]; % Minimum value of each group
     % 設定矩陣大小
-    groupNum = 50;  %族群數
+    groupNum = 75;  %族群數
     dimention = 2;  %變數個數    
-    totalIter=50;   %遞迴數
+    totalIter=70;   %遞迴數
     %----------
     group=groupInit(Max , Min , groupNum);
     Best_sol=inf;
